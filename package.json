@@ -1,6 +1,7 @@
 {
   "name": "multiplication-table-the-game",
   "version": "0.0.0",
+  "license": "GPL-3.0+",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
