@@ -1,5 +1,6 @@
 import { ref, readonly, computed } from 'vue'
-import { random } from 'lodash-es'
+import { random, shuffle } from 'lodash-es'
+import { generateList } from '../lib/nums'
 
 const state = ref([1, 1])
 
@@ -9,10 +10,18 @@ const equation = computed<string>(() => {
   return `${a} x ${b} = ?`
 })
 
-const result = computed<Number>(() => {
+const result = computed<number>(() => {
   const [a, b] = state.value
 
   return a * b
+})
+
+const options = computed<number[]>(() => {
+  const [a, b] = state.value
+
+  return shuffle(
+    generateList(4, a, b)
+  )
 })
 
 const reload = () => {
@@ -25,6 +34,7 @@ const reload = () => {
 const useEquation = () => {
   return {
     equation,
+    options,
     reload,
     result,
     state: readonly(state)
