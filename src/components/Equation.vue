@@ -5,12 +5,9 @@ import { useEquation } from '../state/equation'
 export default defineComponent({
   name: 'Equation',
   setup () {
-    const { equation, result, reload, options } = useEquation()
+    const { equation } = useEquation()
 
     return {
-      reload,
-      result,
-      options,
       equation
     }
   }
@@ -18,15 +15,17 @@ export default defineComponent({
 </script>
 
 <template>
-  <div class="box">
-    <pre>{{equation}}</pre>
-    <br>
-    <pre>{{ result }}</pre>
-    <br>
-    <pre>{{ options }}</pre>
-    <br>
-    <button class="button" @click="reload">
-      reload
-    </button>
-  </div>
+  <section class="hero mb-4 is-link">
+    <div class="hero-body">
+      <p class="title">
+        {{ equation }}
+      </p>
+    </div>
+  </section>
 </template>
+
+<style scoped>
+  p {
+    text-align: center;
+  }
+</style>
