@@ -1,28 +1,36 @@
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, ref } from 'vue'
 import { useEquation } from '../state/equation'
 
 export default defineComponent({
   name: 'Options',
-  setup () {
-    const { equation, result, reload, options } = useEquation()
+  emits: {
+    select: (val: number) => val > 0
+  },
+  setup (props, { emit }) {
+    const { reload, options } = useEquation()
+
+    const onSelect = (val: number) => {
+      emit('select', val)
+    }
 
     return {
+      onSelect,
       reload,
-      result,
-      options,
-      equation
+      options
     }
   }
 })
 </script>
 
 <template>
-  <div class="columns is-desktop">
-    <div class="column"
+  <div class="columns is-multiline is-tablet is-mobile">
+    <div class="column is-half"
       v-for="(value, i) in options"
       :key="i">
-      <button class="button is-link is-light is-large is-fullwidth">
+      <button
+        @click="onSelect(value)"
+        class="button is-link is-light is-large is-fullwidth">
         {{ value }}
       </button>
     </div>
