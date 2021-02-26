@@ -1,10 +1,10 @@
 <template>
-  <nav class="navbar is-link" role="navigation" aria-label="main navigation">
-    <div class="container">
+  <nav class="navbar is-black" role="navigation" aria-label="main navigation">
+    <div class="container is-max-desktop">
       <div class="navbar-brand">
-        <a class="navbar-item" href="/">
-          Multiplication Table - The Game
-        </a>
+        <p class="navbar-item">
+          Multiplication Table 🎲
+        </p>
 
         <!-- <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
           <span aria-hidden="true"></span>
@@ -15,3 +15,10 @@
     </div>
   </nav>
 </template>
+
+<style scoped>
+.navbar-brand {
+  margin: 0 auto;
+  margin-left: inherit !important;
+}
+</style>
