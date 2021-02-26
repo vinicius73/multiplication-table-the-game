@@ -17,8 +17,9 @@
 </template>
 
 <style scoped>
-.navbar-brand {
+.navbar-brand, .navbar-item {
   margin: 0 auto;
   margin-left: inherit !important;
+  text-align: center;
 }
 </style>
