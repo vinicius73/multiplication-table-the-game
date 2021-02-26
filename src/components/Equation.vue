@@ -5,10 +5,13 @@ import { useEquation } from '../state/equation'
 export default defineComponent({
   name: 'Equation',
   props: {
-    value: Number
+    value: {
+      type: Number,
+      required: true
+    }
   },
   setup (props) {
-    const { equation, reload, result } = useEquation()
+    const { state, reload, result } = useEquation()
 
     const isValid = computed(() => props.value === result.value)
     const bgColor = computed(() => {
@@ -17,6 +20,12 @@ export default defineComponent({
       }
 
       return isValid.value ? 'has-background-success' : 'has-background-danger'
+    })
+
+    const equation = computed<string>(() => {
+      const [a, b] = state.value
+      const val = (props.value > 0) ? result.value : '?'
+      return `${a} x ${b} = ${val}`
     })
 
     watchEffect(() => {
@@ -34,7 +43,7 @@ export default defineComponent({
 </script>
 
 <template>
-  <p :class="bgColor" class="title has-text-white p-6">
+  <p :class="bgColor" class="title has-text-white p-6 is-unselectable">
     {{ equation }}
   </p>
 </template>

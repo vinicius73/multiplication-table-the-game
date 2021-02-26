@@ -4,12 +4,6 @@ import { generateList } from '../lib/nums'
 
 const state = ref([1, 1])
 
-const equation = computed<string>(() => {
-  const [a, b] = state.value
-
-  return `${a} x ${b} = ?`
-})
-
 const result = computed<number>(() => {
   const [a, b] = state.value
 
@@ -33,7 +27,6 @@ const reload = () => {
 
 const useEquation = () => {
   return {
-    equation,
     options,
     reload,
     result,

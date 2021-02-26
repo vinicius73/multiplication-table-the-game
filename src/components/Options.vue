@@ -1,5 +1,5 @@
 <script lang="ts">
-import { defineComponent, ref } from 'vue'
+import { defineComponent, nextTick, ref } from 'vue'
 import { useEquation } from '../state/equation'
 
 export default defineComponent({
@@ -24,10 +24,10 @@ export default defineComponent({
 </script>
 
 <template>
-  <div class="columns is-multiline is-tablet is-mobile">
+  <div id="equation-options" class="columns is-multiline is-tablet is-mobile">
     <div class="column is-half"
       v-for="(value, i) in options"
-      :key="i">
+      :key="`${i}_${value}`">
       <button
         @click="onSelect(value)"
         class="button is-link is-light is-large is-fullwidth">
